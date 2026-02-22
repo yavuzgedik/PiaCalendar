@@ -1,19 +1,25 @@
-# **PiaCalendar.js 📅**
+# PiaCalendar.js
 
 Hafif (Lite), sıfır bağımlılıklı (Vanilla JS), Bootstrap 5 ile tam uyumlu, modern ve akıllı web takvimi kütüphanesi.
 
 PiaCalendar, projelerinize hızlıca entegre edebileceğiniz, dahili CRUD (Ekle, Sil, Güncelle) yeteneklerine sahip ve backend API'lerinizle kolayca haberleşebilen esnek bir araçtır.
 
-## **✨ Özellikler**
+## Özellikler
 
-* **Vanilla JS (Sıfır Bağımlılık):** jQuery, React veya Vue gerektirmez. Sadece Bootstrap 5 CSS/JS kullanır.  
-* **Akıllı DOM İzleme (Pia Felsefesi):** MutationObserver sayesinde sayfaya AJAX veya Fetch ile sonradan eklenen takvim elementlerini otomatik tanır ve başlatır.  
-* **Backend API Kancaları (Hooks):** onFetchEvents, onAddEvent, onUpdateEvent ve onDeleteEvent ile kendi veritabanınıza kolayca bağlayın.  
-* **Tam Duyarlı (Responsive):** Mobil ve tablet cihazlarda yatay kaydırılabilir, aktif günü vurgulayan akıllı ızgara (grid) yapısı.  
-* **Dahili Modal ve Formlar:** Etkinlik ekleme ve düzenleme pencereleri kütüphane tarafından otomatik oluşturulur.  
-* **İki Farklı Veri Basma Yöntemi:** İster AJAX ile dinamik çekin, ister sayfa yüklenirken doğrudan HTML içine JSON olarak (data-pia-events) basın.
+* **Vanilla JS (Sıfır Bağımlılık):** 
+jQuery, React veya Vue gerektirmez. Sadece Bootstrap 5 CSS/JS kullanır.  
+* **Akıllı DOM İzleme (Pia Felsefesi):** 
+MutationObserver sayesinde sayfaya AJAX veya Fetch ile sonradan eklenen takvim elementlerini otomatik tanır ve başlatır.  
+* **Backend API Kancaları (Hooks):** 
+onFetchEvents, onAddEvent, onUpdateEvent ve onDeleteEvent ile kendi veritabanınıza kolayca bağlayın.  
+* **Tam Duyarlı (Responsive):** 
+Mobil ve tablet cihazlarda yatay kaydırılabilir, aktif günü vurgulayan akıllı ızgara (grid) yapısı.  
+* **Dahili Modal ve Formlar:** 
+Etkinlik ekleme ve düzenleme pencereleri kütüphane tarafından otomatik oluşturulur.  
+* **İki Farklı Veri Basma Yöntemi:** 
+İster AJAX ile dinamik çekin, ister sayfa yüklenirken doğrudan HTML içine JSON olarak (data-pia-events) basın.
 
-## **🚀 Kurulum**
+## Kurulum
 
 **1. Gereksinimler:** Sayfanızda Bootstrap 5 CSS ve JS bundle'ının bulunduğundan emin olun.
 
@@ -28,9 +34,9 @@ PiaCalendar, projelerinize hızlıca entegre edebileceğiniz, dahili CRUD (Ekle,
 <script src="PiaCalendar.js"></script>
 ```
 
-## **💻 Kullanım Örnekleri**
+## Kullanım Örnekleri
 
-### **Yöntem 1: Hızlı ve Basit (HTML Üzerinden Veri Basma)**
+### > Yöntem 1: Hızlı ve Basit (HTML Üzerinden Veri Basma)
 
 API yazmanıza gerek kalmadan, veritabanınızdaki verileri sayfa render edilirken doğrudan HTML'e basabilirsiniz.
 
@@ -51,7 +57,7 @@ API yazmanıza gerek kalmadan, veritabanınızdaki verileri sayfa render edilirk
 ```
 
 
-### **Yöntem 2: Gelişmiş API ve AJAX Entegrasyonu (Önerilen)**
+### > Yöntem 2: Gelişmiş API ve AJAX Entegrasyonu (Önerilen)
 
 Kullanıcı aylar arasında gezinirken veya yeni kayıt eklerken backend'inizle (PHP, Node.js, .NET vb.) iletişim kurun.
 
@@ -92,7 +98,7 @@ PiaCalendar.observeDOM({
 </script>
 ```
 
-## **🎨 Yapılandırma ve Dil Seçenekleri (Options)**
+## Yapılandırma ve Dil Seçenekleri (Options)
 
 PiaCalendar.observeDOM(options) metoduna gönderebileceğiniz varsayılan ayarlar:
 
