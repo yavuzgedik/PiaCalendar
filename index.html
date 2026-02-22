@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiaCalendar.js - Lite & Modern Takvim</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome (İkonlar için) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-bottom: 50px;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #0d6efd, #0dcaf0);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .code-block {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Üst Başlık ve Butonlar -->
+    <div class="demo-header text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold"><i class="far fa-calendar-alt me-3"></i>PiaCalendar.js</h1>
+            <p class="lead mb-4">Hafif, Bootstrap 5 Uyumlu, CRUD Destekli Vanilla JS Takvim Kütüphanesi</p>
+            
+            <div class="d-flex justify-content-center gap-3">
+                <a href="https://github.com/yavuzgedik/PiaCalendar" target="_blank" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+                    <i class="fab fa-github me-2"></i> GitHub'da İncele
+                </a>
+                <a href="#" onclick="alert('Lütfen önceki kod bloğundan PiaCalendar.js dosyasını kopyalayın.'); return false;" class="btn btn-light btn-lg text-primary px-4 rounded-pill shadow-sm">
+                    <i class="fas fa-download me-2"></i> Kütüphaneyi İndir
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Takvim Demo Alanı -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                    <div class="card-header bg-white border-0 pt-4 pb-0 px-4">
+                        <h4 class="fw-bold m-0"><i class="fas fa-desktop text-primary me-2"></i> Canlı Demo</h4>
+                        <p class="text-muted small">Günlere tıklayarak test edebilirsiniz. Değişiklikler sayfayı yenileyene kadar hafızada tutulur.</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <!-- PiaCalendar buraya yüklenecek (Otomatik Başlatma) -->
+                        <div data-pia-calendar="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kullanım Örnekleri -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="fw-bold mb-4"><i class="fas fa-laptop-code text-primary me-2"></i>Kullanım Örnekleri</h3>
+            </div>
+
+            <!-- Örnek 1 -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-dark">1. Basit Kullanım (HTML Attribute)</h5>
+                        <p class="text-muted small">Sayfa yüklenirken veritabanınızdaki veriyi doğrudan JSON formatında basabilirsiniz. API yazmanıza gerek kalmaz.</p>
+                        <pre class="code-block"><code>&lt;!-- Sadece bu HTML kodunu ekleyin --&gt;
+&lt;div 
+  data-pia-calendar="true" 
+  data-pia-events='[
+    {"title": "Toplantı", "date": "2024-10-15", "color": "primary"},
+    {"title": "Sunum", "date": "2024-10-18", "color": "danger"}
+  ]'&gt;
+&lt;/div&gt;
+
+&lt;!-- JS Dosyasını Çağırın ve Başlatın --&gt;
+&lt;script src="PiaCalendar.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    PiaCalendar.observeDOM();
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Örnek 2 -->
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-dark">2. Gelişmiş Kullanım (REST API & AJAX)</h5>
+                        <p class="text-muted small">Aylar arası gezerken veya veri eklerken kendi API'nize (PHP, .NET vb.) anlık istek atabilirsiniz.</p>
+                        <pre class="code-block"><code>&lt;div data-pia-calendar="true"&gt;&lt;/div&gt;
+
+&lt;script src="PiaCalendar.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+// MutationObserver ile sayfadaki tüm takvimleri izle ve API'ye bağla
+PiaCalendar.observeDOM({
+    onFetchEvents: async (year, month) => {
+        const res = await fetch(`/api/takvim?y=${year}&m=${month}`);
+        return await res.json(); 
+    },
+    onAddEvent: async (data) => {
+        const res = await fetch('/api/ekle', {
+            method: 'POST', body: JSON.stringify(data)
+        });
+        return await res.json(); // Eklenen veriyi id'si ile dönmeli
+    },
+    onDeleteEvent: async (id) => {
+        await fetch(`/api/sil/${id}`, { method: 'DELETE' });
+        return true;
+    }
+});
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 1. Kütüphaneyi Projenize Dahil Edin (Önizleme çalışması için script içine taşındı) -->
+    <script src="PiaCalendar.js"></script>
+  
+</body>
+</html>
