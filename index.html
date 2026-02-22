@@ -43,14 +43,16 @@
             <h1 class="display-4 fw-bold"><i class="far fa-calendar-alt me-3"></i>PiaCalendar.js</h1>
             <p class="lead mb-4">Hafif, Bootstrap 5 Uyumlu, CRUD Destekli Vanilla JS Takvim Kütüphanesi</p>
             
-            <div class="d-flex justify-content-center gap-3">
-                <a href="https://github.com/yavuzgedik/PiaCalendar" target="_blank" class="btn btn-outline-light btn-lg px-4 rounded-pill">
-                    <i class="fab fa-github me-2"></i> GitHub'da İncele
-                </a>
-                <a href="#" onclick="alert('Lütfen önceki kod bloğundan PiaCalendar.js dosyasını kopyalayın.'); return false;" class="btn btn-light btn-lg text-primary px-4 rounded-pill shadow-sm">
-                    <i class="fas fa-download me-2"></i> Kütüphaneyi İndir
-                </a>
-            </div>
+            <!-- İndirme Butonu Eklendi -->
+            <button class="btn btn-light btn-lg mt-3 fw-bold shadow-sm text-dark" onclick="downloadPiaCalendar()">
+                <i class="bi bi-download"></i>
+                PiaCalendar.js İndir
+            </button>
+
+			<a class="btn btn-light btn-lg mt-3 fw-bold shadow-sm text-dark" href="https://github.com/yavuzgedik/PiaCalendar/">
+                <i class="bi github"></i>
+                GitHub
+            </a>
         </div>
     </div>
 
@@ -139,7 +141,7 @@ PiaCalendar.observeDOM({
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- 1. Kütüphaneyi Projenize Dahil Edin (Önizleme çalışması için script içine taşındı) -->
-    <script>
+    <script id="piacalendar-source">
         /**
          * PiaCalendar.js
          * @version 1.1.0
@@ -746,6 +748,23 @@ PiaCalendar.observeDOM({
             // Not: ObserveDOM, sayfaya AJAX/Fetch ile sonradan ekleyeceğiniz HTML içindeki
             // <div data-pia-calendar="true"></div> etiketlerini de yakalayıp otomatik takvime dönüştürür!
         });
+    </script>
+
+    <script>
+        function downloadPiaCalendar() {
+            const sourceCode = document.getElementById('piacalendar-source').textContent;
+            const blob = new Blob([sourceCode.trim()], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'PiaSelect.js';
+            document.body.appendChild(a);
+            a.click();
+            
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
     </script>
 </body>
 </html>
