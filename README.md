@@ -4,6 +4,8 @@ Hafif (Lite), sıfır bağımlılıklı (Vanilla JS), Bootstrap 5 ile tam uyumlu
 
 PiaCalendar, projelerinize hızlıca entegre edebileceğiniz, dahili CRUD (Ekle, Sil, Güncelle) yeteneklerine sahip ve backend API'lerinizle kolayca haberleşebilen esnek bir araçtır.
 
+[![Live Demo](https://img.shields.io/badge/Canlı_Demo-için_tıklayınız-success?style=for-the-badge&logo=github)](https://yavuzgedik.github.io/PiaCalendar/)
+
 ## Özellikler
 
 * **Vanilla JS (Sıfır Bağımlılık):** 
